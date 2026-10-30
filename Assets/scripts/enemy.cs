@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 
         if (vidaEnemy <= 0)
         {
+            //enemy morrer
             Destroy(gameObject);
         }
 

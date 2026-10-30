@@ -44,8 +44,13 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKeyDown("space") && chao == true)
         {
-            transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
+            transform.Translate(new Vector3( 0, 3,0) * jumpForce * Time.deltaTime);
             chao = false;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            // mouse esquerdo pra ataque 
         }
 
 
