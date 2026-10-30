@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour
     public float Velocidade = 10.0f;
     public float jumpForce;
     public bool chao;
-
+    // renomear a cápsula para "Capsule" o deixar a entidade "player" separada do objeto "cápsula".
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

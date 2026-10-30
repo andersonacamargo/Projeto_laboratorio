@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
             playerDetected = true;
         }
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
             playerDetected = false;
         }
