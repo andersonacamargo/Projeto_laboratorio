@@ -55,7 +55,7 @@ public class playerController : MonoBehaviour
             transform.Translate(Vector3.up * jumpForce );
             chao = false;
         }
-
+        // alguma coisa
         if (Input.GetKey("q"))
         {
             transform.Translate(direcao.normalized * dash * Time.deltaTime);
