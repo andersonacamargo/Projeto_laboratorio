@@ -61,7 +61,7 @@ public class playerController : MonoBehaviour
         {
             foreach (ContactPoint contact in collision.contacts)
             {
-                if (!collision.gameObject.CompareTag("playerTag"))
+                if (!collision.gameObject.CompareTag("Player"))
                 {
                     chao = true;
                 }
