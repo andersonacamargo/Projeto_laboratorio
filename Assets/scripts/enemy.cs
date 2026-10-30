@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     public float VelocidadeEnemy = 2.0f;
     public Transform target;
     public bool playerDetected = false;
-    public int enemyDano = 1;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,11 +25,6 @@ public class Enemy : MonoBehaviour
         {
             float step = VelocidadeEnemy * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-        }
-
-        if (vidaEnemy <= 0)
-        {
-            Destroy(gameObject);
         }
 
 

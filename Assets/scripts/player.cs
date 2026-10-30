@@ -1,68 +1,78 @@
 using UnityEngine;
 
-
 public class playerController : MonoBehaviour
 {
     public int vidaPlayer = 150;
     public float Velocidade = 10.0f;
     public float jumpForce;
     public bool chao;
+    public float dash = 100.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        
     }
 
-
-    // Update is called once per frame
     void Update()
     {
+        //  ZERA a direção no início de cada frame , porque se não tiver o boneco sai voando loucamente
+        Vector3 direcao = Vector3.zero;
+
+        float velocidadeAtual = Velocidade ;
+
+        if (Input.GetKey("left shift"))
+        {
+            velocidadeAtual = Velocidade * 2.0f ;
+        }       
+
         if (Input.GetKey("w"))
         {
-            transform.Translate(Vector3.forward * Velocidade * Time.deltaTime);
+            direcao += Vector3.forward;
         }
-
 
         if (Input.GetKey("a"))
         {
-            transform.Translate(Vector3.left * Velocidade * Time.deltaTime);
+            direcao += Vector3.left;
         }
-
 
         if (Input.GetKey("s"))
         {
-            transform.Translate(Vector3.back * Velocidade * Time.deltaTime);
+            direcao += Vector3.back;
         }
-
 
         if (Input.GetKey("d"))
         {
-            transform.Translate(Vector3.right * Velocidade * Time.deltaTime);
+            direcao += Vector3.right;
         }
 
-
-        if (Input.GetKeyDown("space") && chao == true)
+        if (direcao != Vector3.zero)
         {
-            transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
+            transform.Translate(direcao.normalized * velocidadeAtual * Time.deltaTime);
+        }
+
+        if (Input.GetKey("space") && chao == true)
+        {
+            transform.Translate(Vector3.up * jumpForce );
             chao = false;
+        }
+
+        if (Input.GetKey("q"))
+        {
+            transform.Translate(direcao.normalized * dash * Time.deltaTime);
         }
 
 
     }
 
-
-     void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
         {
-            foreach (ContactPoint contact in collision.contacts)
+            // Dica: verifique se a tag no seu jogo está exatamente assim (maiúsculas/minúsculas importam!)
+            if (!collision.gameObject.CompareTag("playerTag")) 
             {
-                if (!collision.gameObject.CompareTag("playerTag"))
-                {
-                    chao = true;
-                }
+                chao = true;
             }
         }
-
-
+    }
 }
-
