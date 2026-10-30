@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float VelocidadeEnemy = 2.0f;
     public Transform target;
     public bool playerDetected = false;
-    public int enemyDano = 1;
+    public int enemyDamage = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,4 +41,3 @@ public class Enemy : MonoBehaviour
         }
     }
 }
-    
