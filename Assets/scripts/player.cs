@@ -111,3 +111,4 @@ public class playerController : MonoBehaviour
         chao = false;
     }
 }
+
